@@ -1,21 +1,22 @@
-# Выполнено ДЗ № 3
+# Werefire_infra
+Werefire Infra repository
 
- - [ ] Основное ДЗ
- - [ ] Дополнительно: подключение ssh someinternalhost из локальной консоли рабочего устройства по алиасу someinternalhost
- - [ ] Дополнительно: использование валидного сертификата для панели управления VPN-сервера
+---
 
-## В процессе сделано:
- - Создание учетной записи в Yandex.Cloud
- - Создание в веб-интерфейсе инстансов ВМ и подключение к ним по SSH
- - Рассмотрел варианты подключения к хостам через бастион-хост и VPN
+## HW №4
 
-Взаимодействие с `repo.mongodb.org` отбивает 403 ошибкой при использовании скрипта `setupvpn.sh`. Поэтому из скрипта были исключены шаги для использования этого репозитория. Mongo пулится из доверенного и проверенного репозитория `mirror.yandex.ru`.
+    testapp_IP = 51.250.80.244
+    testapp_port = 9292
 
-### Реквизиты инстансов.
-    bastion_IP = 51.250.86.19
-    someinternalhost_IP = 10.128.0.15
-### Задания
-> Исследовать способ подключения к someinternalhost в одну команду из вашего рабочего устройства, проверить работоспособность найденного решения и внести его в README.md в вашем репозитории
+Строчный ~~(ОС Windows)~~ startup script для дополнительного задания. Инвенторка скрипта в файле _auto_startup.yaml_
+
+`yc compute instance create --name reddit-app-auto --hostname reddit-app-auto --memory=4 --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 --metadata serial-port-enable=1 --metadata-from-file user-data=auto_startup.yaml`
+
+Mongo из дефолтного репозитория https://mirror.yandex.ru/ самого инстанса
+
+---
+
+## HW №3
 
 ***SSH Agent Forwarding***
 
@@ -50,11 +51,3 @@
       ProxyJump appuser@<bastion_IP>
 
 подключаемся `ssh someinternalhost`
-
-
-> С помощью сервисов sslip.io/xip.io и Let’s Encrypt реализуйте спользование валидного сертификата для панели управления VPN-сервера
-* url: https://51.250.86.19.sslip.io
-
-## PR checklist
- - [x] Выставил label с номером домашнего задания
- - [x] Выставил label с темой домашнего задания
