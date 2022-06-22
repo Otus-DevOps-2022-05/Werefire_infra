@@ -5,6 +5,9 @@ Werefire Infra repository
 
 ## HW №4
 
+    testapp_IP = 51.250.80.244
+    testapp_port = 9292
+
 ---
 
 ## HW №3
