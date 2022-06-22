@@ -1,0 +1,27 @@
+#cloud-config
+users:
+  - name: yc-user
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC8wbELAMF1MZeMABYaFRL3U+Sx/oK9S21z/f29scacQ6h8x90XirPzZ/rLPWB9YkV8J+1FPFgTruMllsjWT87FvT1pBfMXGe8COu98SPcSs1raL7UrQpLgK6AUUBeZQI5iG037CnijMcYw5M/YfkAWHLuLloYXyDNZjiJWVU3ZKAKNXg1q/tHO1qBttYvzjpcZQPbddVqV+U8lyKt7KHQtvwqry/sqd10VNffSWeDhqoCgoufRSUB8F8noAcpCls8Qn0grkT9FWWFYAl9gTk88S7umflc+QZEeHZ6VtQjoFx5AoshMpdmodL0xP3wJPgdK9Psszwgt1ywdR0kMfFc6y3RrgexwU0yAopagrzCbrmE7NSEEGFOSg3F1Xcj+zdT9uR2qaRU7m2cdGob8n8neIqfq1mN9NI8kLLduEhEYb1OeZlL7Zbk3/AaHpQ/zlI2pfTxV97MXBG/9GzxTNa+LvVAMxmx38Fr7EBhADhWDCnRUuWs08Ijp5MxGriCM9Jk= yc-user
+
+packages:
+  - ruby-full
+  - ruby-bundler
+  - build-essential
+  - git
+  - mongodb
+package_update: true
+write_files:
+  - path: /var/lib/cloud/scripts/per-boot/puma_run.sh
+    permissions: '0555'
+    content: |
+      #!/bin/bash
+      sudo systemctl start mongodb
+      sudo systemctl enable mongodb
+      cd /home/yc-user/
+      sudo git clone -b monolith https://github.com/express42/reddit.git
+      cd /home/yc-user/reddit && bundle install
+      sudo puma -d

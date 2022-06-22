@@ -8,6 +8,12 @@ Werefire Infra repository
     testapp_IP = 51.250.80.244
     testapp_port = 9292
 
+Строчный ~~(ОС Windows)~~ startup script для дополнительного задания. Инвенторка скрипта в файле _auto_startup.yaml_
+
+`yc compute instance create --name reddit-app-auto --hostname reddit-app-auto --memory=4 --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 --metadata serial-port-enable=1 --metadata-from-file user-data=auto_startup.yaml`
+
+Mongo из дефолтного репозитория https://mirror.yandex.ru/ самого инстанса
+
 ---
 
 ## HW №3
