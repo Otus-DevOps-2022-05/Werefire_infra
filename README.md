@@ -3,6 +3,19 @@ Werefire Infra repository
 
 ---
 
+## HW №5
+
+Сборка загрузочного диска Packer-ом
+
+Последовательность действий.
+
+1. Изменить имя файла с `packer/variables.json.example` на `packer/variables.json`
+2. Актуализировать значения переменных в файле packer/variables.json
+3. Убедиться в актульности файла key.json ~~(в репе фейко-ключ Yandex Cloud)~~
+4. Выполнить команду в директории packer: `packer build ./ubuntu16.json`
+
+---
+
 ## HW №4
 
     testapp_IP = 51.250.80.244
