@@ -16,6 +16,7 @@ provider "yandex" {
 
 resource "yandex_compute_instance" "app" {
   name = "reddit-app"
+  zone = var.zone
   metadata = {
     ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }
