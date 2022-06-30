@@ -1,0 +1,8 @@
+cloud_id                 = "qwerty123"
+folder_id                = "qwerty123"
+zone                     = "ru-central1-a"
+image_id                 = "qwerty123"
+public_key_path          = "~/.ssh/appuser.pub"
+subnet_id                = "qwerty123"
+service_account_key_file = "C:\\Users\\name\\packer\\key.json"
+private_key_path         = "~/.ssh/appuser"

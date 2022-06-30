@@ -3,6 +3,13 @@ Werefire Infra repository
 
 ---
 
+## HW №6
+
+* Используя переменные в variables.tf, которые забирают данные из terraform.tfvars - заполнил main.tf
+* Запушил пример terraform.tfvars.example
+
+___
+
 ## HW №5
 
 Сборка загрузочного диска Packer-ом
