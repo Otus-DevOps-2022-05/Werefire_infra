@@ -1,4 +1,4 @@
 #!/bin/bash
 sudo apt update
-echo "wait 1m install updates"; sleep 1m; echo "now install ruby"
+while pgrep -a apt; do echo 'w8 apt-get update'; sleep 1m; done
 sudo apt install -y ruby-full ruby-bundler build-essential
