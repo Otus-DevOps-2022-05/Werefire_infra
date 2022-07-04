@@ -2,6 +2,14 @@
 Werefire Infra repository
 
 ---
+## HW №7
+
+* Созданы базовые образы app.json и db.json в директории /packer
+* Подкорректированы скрипты в /packer
+* Добавлены модули terraform/modules
+* Перенесен Terraform в terraform/stage и terraform/prod
+
+___
 
 ## HW №6
 
