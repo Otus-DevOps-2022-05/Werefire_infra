@@ -2,6 +2,15 @@
 Werefire Infra repository
 
 ---
+## HW №8
+
+* установлен Ansible (wsl2)
+* в файл ansible.cfg добавлена информация об подключении к хостам
+* добавлена инвенторка inventory и inventory.yml
+* проверены команды на хостах
+* добавлен прейбук для git
+
+---
 ## HW №7
 
 * Созданы базовые образы app.json и db.json в директории /packer
