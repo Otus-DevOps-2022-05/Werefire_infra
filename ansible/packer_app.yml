@@ -1,0 +1,12 @@
+- name: Configure app environment
+  hosts: all
+  become: true
+  tasks:
+  - name: Install a list of packages
+    apt:
+      pkg:
+      - ruby-full
+      - ruby-bundler
+      - build-essential
+      - git
+      update_cache: yes
