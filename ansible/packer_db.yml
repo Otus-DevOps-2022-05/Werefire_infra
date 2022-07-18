@@ -1,0 +1,19 @@
+- name: Configure MongoDB
+  hosts: all
+  become: true
+  tasks:
+  - name: Install a list of packages
+    apt:
+      pkg:
+      - mongodb
+      update_cache: yes
+
+  - name: Enable service mongod
+    systemd:
+      name: mongodb
+      enabled: yes
+
+  - name: Start mongod
+    systemd:
+      name: mongodb
+      state: started
