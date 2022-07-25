@@ -3,9 +3,28 @@ dependency:
   name: galaxy
 driver:
   name: vagrant
+  provider:
+    name: virtualbox
+  config_options:
+    defaults:
+      remote_user: vagrant
+    ssh_connection:
+      ssh_args: -o StrictHostKeyChecking=no -o User=vagrant
+      pipelining: true
+      timeout: 300
 platforms:
   - name: instance
+    box: ubuntu/xenial64
+    provider_raw_config_args:
+      - "customize [ 'modifyvm', :id, '--uartmode1', 'disconnected' ]"
 provisioner:
   name: ansible
 verifier:
-  name: ansible
+  name: testinfra
+  options:
+    sudo: true
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
