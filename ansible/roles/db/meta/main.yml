@@ -2,7 +2,9 @@ galaxy_info:
   author: your name
   description: your role description
   company: your company (optional)
-
+  role_name: my_name
+  galaxy_name: my_galaxy_name
+  namespace: my_namespace_name
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
   # issue_tracker_url: http://example.com/issue/tracker

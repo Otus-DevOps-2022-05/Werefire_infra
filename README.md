@@ -1,6 +1,33 @@
 # Werefire_infra
 Werefire Infra repository
 
+___
+
+## HW №11
+
+* Локальная разработка при помощи Vagrant, доработка ролей для провижининга в Vagrant
+* Тестирование ролей при помощи Molecule и Testinfra
+* Переключение сбора образов пакером на использование ролей
+
+
+* Настройка гибридной среды wsl2+win11pro
+  * Настройка окружения
+    * wsl2: Vagrant, Molecule, Ansible, Packer
+    * win11pro: VirtualBox
+
+
+_Vagrant должен знать где в win находится VirtualBox_
+
+_Vagrant/Molecule должен разворачивать (.vagrant.d и .vagrant) директории юзера в wsl2 для успешного подключения по SSH (паранойя 0600)_
+
+    export VAGRANT_DOTFILE_PATH="/home/ubuntu/.vagrant"
+    export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH="/home/ubuntu/"
+    export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox:/mnt/c/Windows/System32:/mnt/c/Windows/system32/WindowsPowerShell/v1.0"
+
+_VirtualBox не знает пути для записи логов wsl2 и не может запуститься - поэтому и в Vagrant и в Molecule отключаем COM_
+
+    "modifyvm", :id, "--uartmode1", "disconnected"
+
 ---
 
 ## HW №10
